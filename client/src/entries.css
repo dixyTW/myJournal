@@ -1,0 +1,21 @@
+.Home {
+  background-color: #282c34;
+	min-height: 100vh; 
+  display: flex;
+  flex-direction: column; /*makes flexbox stack vertically*/
+  align-items: center; /*makes text appear col centered*/
+  justify-content: center;  /* makes font appear at center page*/
+  color: white;
+  }
+
+
+
+.entries {
+  background-color: #282c34;
+  margin-left: 400px;
+  margin-right: 400px;
+  border-style: solid;
+  border-width: thick;
+}
+
+  
