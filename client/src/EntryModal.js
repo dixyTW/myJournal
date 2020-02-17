@@ -43,7 +43,8 @@ class EntryModal extends Component {
     const newEntry = {
       date: Date(),
       title: this.state.title,
-      content: this.state.content
+      content: this.state.content,
+      favorite: 0
     }
 
     this.props.addEntries(this.state.id, newEntry);

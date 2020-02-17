@@ -15,10 +15,10 @@ router.post('/', (req, res) => {
         return res.status(400).json({msg: req.body.password})
     }
 
-    User.findOne({email})
+    User.findOne({email}) 
         .then(user => {
             if(user) {
-                return res.status(400).json({msg: "user already exists"});
+            return res.status(400).json({msg: "user already exists"});
             }
         })
 

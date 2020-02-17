@@ -24,7 +24,8 @@ router.post('/:id', (req,res) => {
     const newEntry = new Entry({
         date: Date(),
         title: req.body.title,
-        content: req.body.content
+        content: req.body.content,
+        favorite: req.body.favorite
     })
     
     const filter = {id: req.params.id}
@@ -34,14 +35,10 @@ router.post('/:id', (req,res) => {
             //if user has no entries, create a new UserEntry model and store it for the user
             const newUserEntry = new userEntries({
                 id: req.params.id,
-                entryList: [{
-                    date: Date(),
-                    title: req.body.title,
-                    content: req.body.content
-                }]
+                entryList: [newEntry]
             })
             newUserEntry.save()
-                .then(userEntry => res.json(userEntry))
+                .then(res.send(newEntry))
         }
         else {
                 uEntry.entryList.push(newEntry)
@@ -63,7 +60,8 @@ router.post('/', (req, res) => {
     userEntries.findOne(filter)
     .then(uEntry => {
         for (var i in uEntry.entryList) {
-            if (uEntry.entryList[i] == entryID) {
+
+            if (uEntry.entryList[i]._id == entryID) {
                 uEntry.entryList[i].favorite ^= 1
                 break;
             }
@@ -72,7 +70,8 @@ router.post('/', (req, res) => {
             if (err) {
                 console.log("somethings wrong")
             }
-            res.send(newEntry)
+
+            res.send(result)
         })
         
     })

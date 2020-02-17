@@ -13,6 +13,10 @@ const EntrySchema = new Schema({
     content: {
         type: String,
         required: true
+    },
+    favorite: {
+        type: Number,
+        required: true
     }
 })
 

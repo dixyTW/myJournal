@@ -10,9 +10,9 @@ app.use(express.json());
 
 
 const db = config.get("mongoURI");
-
+mongoose.set('useFindAndModify', false);
 mongoose
-    .connect(db)
+    .connect(db, {useUnifiedTopology: true, useNewUrlParser: true})
     .then(( () => console.log('MongoDB Connected... ')))
     .catch(err => console.log(err));
 

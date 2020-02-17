@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ENTRIES, ADD_ENTRIES, DELETE_ENTRIES, ENTRIES_LOADING, NO_ENTRIES, UPDATE_FAVORITES } from './types';
+import { GET_ENTRIES, ADD_ENTRIES, DELETE_ENTRIES, ENTRIES_LOADING, NO_ENTRIES, UPDATE_FAVORITES, SORT_ASCENDING, SORT_DESCENDING } from './types';
 import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
 
@@ -54,19 +54,34 @@ export const deleteEntries = (id, entry) => (dispatch, getState) => {
             )
 }
 
-export const updateFavorites = (id, entry) => (dispatch, getState) => {
+export const updateFavorites = (entry) => (dispatch, getState) => {
     axios
-        .post(`/api/entry/${id}`, tokenConfig(getState))
-        .then(res => {
+        .post("/api/entry/", entry, tokenConfig(getState))
+        .then(res=>
             dispatch({
                 type: UPDATE_FAVORITES,
-                payload: res.data
-            })
-        })
+                payload: entry.entryID
+                })
+            )
         .catch(err =>
             dispatch(returnErrors(err.response.data, err.response.status))
             )
 }
+
+export const sortByAscending = () => (dispatch) => {
+    dispatch({
+        type: SORT_ASCENDING,
+        payload: null
+    })
+}
+
+export const sortByDescending = () => (dispatch) => {
+    dispatch({
+        type: SORT_DESCENDING,
+        payload: null
+    })
+}
+
 
 export const setEntriesLoading = () => {
     return {

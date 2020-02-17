@@ -39,11 +39,11 @@ class App extends Component {
 
     const guestLinks = (
       <Fragment>
-        <Navbar.Brand ><Link to="/">HVO</Link></Navbar.Brand>
+        <Navbar.Brand ><Link to="/">myJournal</Link></Navbar.Brand>
           <Nav className="ml-auto">
-              <Link to="/login">Login </Link>
+              <Link to="/login"><div>Login</div> </Link>
               <Link to="/register">Register</Link>
-            </Nav>
+          </Nav>
       </Fragment>
     )
 

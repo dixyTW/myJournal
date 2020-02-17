@@ -7,6 +7,7 @@ function auth(req, res, next) {
 
     if(!token) {
         res.status(401).json({ msg: 'no token, authorization denied'})
+        return //cant send two res.status in one res call
     }
 
     try {

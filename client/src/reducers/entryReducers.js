@@ -4,7 +4,9 @@ import {
     ADD_ENTRIES,
     DELETE_ENTRIES,
     NO_ENTRIES,
-    UPDATE_FAVORITES
+    UPDATE_FAVORITES,
+    SORT_ASCENDING,
+    SORT_DESCENDING
 } from '../actions/types'
 
 const initialState = {
@@ -42,7 +44,33 @@ export default function(state = initialState, action) {
                 loading: false
             }
         case UPDATE_FAVORITES:
-            return state
+            for (var i = 0; i < state.entries.length; i++) {
+                if (state.entries[i]._id === action.payload) {
+                    state.entries[i].favorite ^= 1
+                    break;
+                }
+            }
+            return {
+                ...state,
+                entries: state.entries
+            }
+        case SORT_ASCENDING:
+                state.entries.sort(function(a,b){
+                    return new Date(a.date) - new Date(b.date);
+                })
+                return {
+                    ...state,
+                    entries: state.entries
+                }
+            
+        case SORT_DESCENDING:
+                state.entries.sort(function(a,b){
+                    return new Date(b.date) - new Date(a.date);
+                })
+                return {
+                    ...state,
+                    entries: state.entries
+                }
         default:
             return state;
     }
