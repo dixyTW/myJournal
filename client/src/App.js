@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { loadUser } from './actions/authActions'
 import { connect } from 'react-redux';
 import Logout from './Logout';
+import './app.css'
 /*
 Problems/ or Problems to be checked
 1. Homepage UI
@@ -41,7 +42,7 @@ class App extends Component {
       <Fragment>
         <Navbar.Brand ><Link to="/">myJournal</Link></Navbar.Brand>
           <Nav className="ml-auto">
-              <Link to="/login"><div>Login</div> </Link>
+              <Link to="/login"><div className='link'>Login</div> </Link>
               <Link to="/register">Register</Link>
           </Nav>
       </Fragment>
