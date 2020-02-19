@@ -1,8 +1,10 @@
 # myJournal
-
-first full-stack react app [Link to the Project](https://arcane-shore-96741.herokuapp.com)  
+[Link to the Project](https://arcane-shore-96741.herokuapp.com)  
 <br/>
-goal: project for practicing reactjs  
+first full-stack react app 
+<br/>
+**goal:**  
+project for practicing reactjs  
 <br/>
 Functionalities:  
 1. Adding/Deleting new journal entries
