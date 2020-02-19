@@ -3,7 +3,7 @@
 <br/>
 first full-stack react app  
 <br/>
-**Goal:**project for practicing reactjs  
+**Goal:** project for practicing reactjs  
 <br/>
 Functionalities:  
 1. Adding/Deleting new journal entries
