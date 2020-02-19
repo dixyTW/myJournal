@@ -11,7 +11,6 @@ import './app.css'
 Problems/ or Problems to be checked
 1. Homepage UI
 4. set up loading screen
-5. Login/Register spacing
 */
 class App extends Component {
 
