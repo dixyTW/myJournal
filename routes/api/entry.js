@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose')
-//const auth = require('../../middleware/auth');
+const auth = require('../../middleware/auth');
 
 //Entry Model 
 const {userEntries, Entry} = require('../../models/UserEntry');
@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
         .catch(err => res.status(404).json({message: "no entries found"}))
 });
 
-router.post('/:id', (req,res) => {
+router.post('/:id', auth, (req,res) => {
     const newEntry = new Entry({
         date: Date(),
         title: req.body.title,
@@ -54,7 +54,7 @@ router.post('/:id', (req,res) => {
    
 });
 
-router.post('/', (req, res) => {
+router.post('/',auth, (req, res) => {
     const filter = {id: req.body.userID}
     const entryID = req.body.entryID
     userEntries.findOne(filter)
@@ -78,7 +78,7 @@ router.post('/', (req, res) => {
 
 })
 
-router.delete('/:id', (req,res) => {
+router.delete('/:id',auth, (req,res) => {
     const filter = {id: req.params.id}
     const entryID = mongoose.Types.ObjectId(req.body.entryID)
     userEntries.findOne(filter)
